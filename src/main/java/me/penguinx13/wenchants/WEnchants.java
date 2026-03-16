@@ -12,7 +12,7 @@ import me.penguinx13.wapi.commands.paper.platform.*;
 import me.penguinx13.wapi.enchants.api.EnchantRegistry;
 import me.penguinx13.wapi.enchants.manager.EnchantManager;
 import me.penguinx13.wapi.enchants.storage.EnchantStorage;
-import me.penguinx13.wenchants.commdands.Commands;
+import me.penguinx13.wenchants.commands.Commands;
 import me.penguinx13.wenchants.enchants.BoerEnchant;
 import me.penguinx13.wenchants.enchants.EnchantListener;
 import org.bukkit.plugin.java.JavaPlugin;
