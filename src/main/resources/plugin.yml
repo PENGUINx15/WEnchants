@@ -3,5 +3,5 @@ version: '${version}'
 main: me.penguinx13.wenchants.WEnchants
 commands:
   wenchants:
-    description: Give night vision effect.
+    description: Manage custom WEnchants enchants.
     usage: "/wenchants"
