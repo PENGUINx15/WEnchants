@@ -70,7 +70,7 @@ public class BoerEnchant extends CustomEnchant {
                     ? origin.getRelative(i, 0, 0)
                     : origin.getRelative(0, 0, i);
 
-            breakOther(target, tool);
+            breakOther(origin, target, tool);
         }
     }
 
@@ -88,7 +88,7 @@ public class BoerEnchant extends CustomEnchant {
 
             for (int x = -1; x <= 1; x++) {
                 for (int z = -1; z <= 1; z++) {
-                    breakOther(origin.getRelative(x, 0, z), tool);
+                    breakOther(origin, origin.getRelative(x, 0, z), tool);
                 }
             }
 
@@ -103,7 +103,7 @@ public class BoerEnchant extends CustomEnchant {
 
             for (int x = -1; x <= 1; x++) {
                 for (int y = -1; y <= 1; y++) {
-                    breakOther(origin.getRelative(x, y, 0), tool);
+                    breakOther(origin, origin.getRelative(x, y, 0), tool);
                 }
             }
 
@@ -111,7 +111,7 @@ public class BoerEnchant extends CustomEnchant {
 
             for (int z = -1; z <= 1; z++) {
                 for (int y = -1; y <= 1; y++) {
-                    breakOther(origin.getRelative(0, y, z), tool);
+                    breakOther(origin, origin.getRelative(0, y, z), tool);
                 }
             }
 
@@ -127,13 +127,18 @@ public class BoerEnchant extends CustomEnchant {
             for (int y = -1; y <= 1; y++) {
                 for (int z = -1; z <= 1; z++) {
 
-                    breakOther(origin.getRelative(x, y, z), tool);
+                    breakOther(origin, origin.getRelative(x, y, z), tool);
 
                 }
             }
         }
     }
-    private void breakOther(Block block, ItemStack item) {
+
+    private void breakOther(Block origin, Block block, ItemStack item) {
+        if (block.equals(origin)) {
+            return;
+        }
+
         block.breakNaturally(item);
     }
 }

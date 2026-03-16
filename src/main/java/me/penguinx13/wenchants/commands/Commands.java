@@ -18,38 +18,38 @@ import org.bukkit.inventory.ItemStack;
 public final class Commands {
 
     private final EnchantStorage enchantStorage;
-    private final CustomEnchant lifestealEnchant;
+    private final CustomEnchant boerEnchant;
 
     public Commands(final EnchantStorage enchantStorage,
-                                 final CustomEnchant lifestealEnchant) {
+                                 final CustomEnchant boerEnchant) {
         this.enchantStorage = enchantStorage;
-        this.lifestealEnchant = lifestealEnchant;
+        this.boerEnchant = boerEnchant;
     }
 
     @SubCommand(value = "enchant add boer", playerOnly = true)
     public void addBoer(final Player sender, @Arg("level") @Min(1) final int level) {
-        if (level > lifestealEnchant.getMaxLevel()) {
+        if (level > boerEnchant.getMaxLevel()) {
             sender.sendMessage("§cМаксимальный уровень: "
-                    + lifestealEnchant.getMaxLevel());
+                    + boerEnchant.getMaxLevel());
             return;
         }
 
         final ItemStack item = sender.getInventory().getItemInMainHand();
         try {
-            enchantStorage.addEnchant(item, lifestealEnchant, level);
+            enchantStorage.addEnchant(item, boerEnchant, level);
             LoreUtil.updateLore(item, enchantStorage.getEnchants(item));
-            sender.sendMessage("§aНаложено зачарование Lifesteal " + level + ".");
+            sender.sendMessage("§aНаложено зачарование Boer " + level + ".");
         } catch (IllegalArgumentException ex) {
             sender.sendMessage("§cНе удалось наложить зачарование: " + ex.getMessage());
         }
     }
 
-    @SubCommand(value = "enchant remove lifesteal", playerOnly = true)
+    @SubCommand(value = "enchant remove boer", playerOnly = true)
     public void removeBoer(final Player sender) {
         final ItemStack item = sender.getInventory().getItemInMainHand();
-        enchantStorage.removeEnchant(item, lifestealEnchant);
+        enchantStorage.removeEnchant(item, boerEnchant);
         LoreUtil.updateLore(item, enchantStorage.getEnchants(item));
-        sender.sendMessage("§eLifesteal удалён с предмета.");
+        sender.sendMessage("§eBoer удалён с предмета.");
     }
 
     @SubCommand(value = "enchant list", playerOnly = true)
