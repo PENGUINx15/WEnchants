@@ -1,0 +1,8 @@
+name: WEnchants
+version: '${version}'
+main: me.penguinx13.wenchants.WEnchants
+depend: [NBTAPI]
+commands:
+  giveboer:
+    description: Give night vision effect.
+    usage: "/giveboer"
