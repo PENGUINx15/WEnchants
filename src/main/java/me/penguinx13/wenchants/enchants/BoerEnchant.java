@@ -54,7 +54,7 @@ public class BoerEnchant extends CustomEnchant {
     }
 
     /**
-     * 3x1x1
+     * 1x3x1
      */
     private void breakLine(Player player, Block origin, ItemStack tool) {
 
@@ -66,9 +66,7 @@ public class BoerEnchant extends CustomEnchant {
 
         for (int i = -1; i <= 1; i++) {
 
-            Block target = northSouth
-                    ? origin.getRelative(i, 0, 0)
-                    : origin.getRelative(0, 0, i);
+            Block target = origin.getRelative(0, i, 0);
 
             breakOther(origin, target, tool);
         }
